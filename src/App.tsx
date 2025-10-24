@@ -12,6 +12,8 @@ import ClientTracking from "./pages/client/ClientTracking";
 import ClientProfile from "./pages/client/ClientProfile";
 import Catalog from "./pages/client/Catalog";
 import Products from "./pages/client/Products";
+import ProductsByCategory from "./pages/client/ProductsByCategory";
+import Promo from "./pages/client/Promo";
 import DeliveryMissions from "./pages/delivery/DeliveryMissions";
 import DeliveryActive from "./pages/delivery/DeliveryActive";
 import DeliveryEarnings from "./pages/delivery/DeliveryEarnings";
@@ -19,7 +21,9 @@ import DeliveryProfile from "./pages/delivery/DeliveryProfile";
 import MerchantDashboard from "./pages/merchant/MerchantDashboard";
 import MerchantProducts from "./pages/merchant/MerchantProducts";
 import MerchantOrders from "./pages/merchant/MerchantOrders";
+import MerchantProfile from "./pages/merchant/MerchantProfile";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,7 +42,8 @@ const App = () => (
             {/* Client Routes */}
             <Route path="/client/home" element={<ClientHome />} />
             <Route path="/client/catalog" element={<Catalog />} />
-            <Route path="/client/products" element={<Products />} />
+            <Route path="/client/products" element={<ProductsByCategory />} />
+            <Route path="/client/promo" element={<Promo />} />
             <Route path="/client/orders" element={<ClientOrders />} />
             <Route path="/client/tracking" element={<ClientTracking />} />
             <Route path="/client/profile" element={<ClientProfile />} />
@@ -53,9 +58,13 @@ const App = () => (
             <Route path="/merchant/dashboard" element={<MerchantDashboard />} />
             <Route path="/merchant/products" element={<MerchantProducts />} />
             <Route path="/merchant/orders" element={<MerchantOrders />} />
+            <Route path="/merchant/profile" element={<MerchantProfile />} />
             
             {/* Admin Routes */}
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            
+            {/* Other Routes */}
+            <Route path="/faq" element={<FAQ />} />
             
             <Route path="*" element={<NotFound />} />
           </Routes>

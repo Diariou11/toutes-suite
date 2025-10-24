@@ -1,6 +1,7 @@
-import { Package, ShoppingCart, DollarSign, TrendingUp, Menu } from "lucide-react";
+import { Package, ShoppingCart, DollarSign, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { MerchantMenu } from "@/components/MerchantMenu";
 
 const stats = [
   { label: "Ventes du jour", value: "450 000 GNF", icon: DollarSign, color: "text-primary" },
@@ -24,9 +25,7 @@ export default function MerchantDashboard() {
       <div className="bg-primary text-primary-foreground p-6 rounded-b-3xl">
         <div className="flex items-center justify-between mb-4">
           <h1 className="font-heading text-2xl font-bold">Ma Boutique</h1>
-          <button className="p-2 hover:bg-primary-light rounded-lg transition-colors">
-            <Menu className="w-6 h-6" />
-          </button>
+          <MerchantMenu />
         </div>
         <p className="text-primary-foreground/80">Tableau de bord</p>
       </div>

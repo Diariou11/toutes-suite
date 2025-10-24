@@ -21,7 +21,7 @@ export default function DeliveryProfile() {
             <User className="w-10 h-10" />
           </div>
           <div>
-            <h1 className="font-heading text-2xl font-bold">Ibrahima Sow</h1>
+            <h1 className="font-heading text-2xl font-bold">Jean Haba</h1>
             <p className="text-primary-foreground/80">Livreur Certifié</p>
           </div>
         </div>

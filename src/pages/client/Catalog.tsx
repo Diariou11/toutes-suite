@@ -35,7 +35,7 @@ export default function Catalog() {
         {categories.map((category) => (
           <button
             key={category.name}
-            onClick={() => navigate("/client/products")}
+            onClick={() => navigate(`/client/products?category=${encodeURIComponent(category.name)}`)}
             className="bg-card rounded-2xl p-6 border border-border hover:shadow-md transition-all active:scale-95 text-left"
           >
             <div className={`${category.color} text-white w-14 h-14 rounded-xl flex items-center justify-center mb-4`}>

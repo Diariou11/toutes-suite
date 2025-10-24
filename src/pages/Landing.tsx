@@ -16,7 +16,7 @@ const roles = [
       "Suivi en temps réel"
     ],
     path: "/auth/client",
-    image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1601599561213-832382fd07ba?w=1600&q=80"
   },
   {
     icon: Store,
@@ -29,7 +29,7 @@ const roles = [
       "Support dédié 24/7"
     ],
     path: "/auth/merchant",
-    image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=1600&q=80"
   },
   {
     icon: Bike,
@@ -42,7 +42,7 @@ const roles = [
       "Assurance incluse"
     ],
     path: "/auth/delivery",
-    image: "https://images.unsplash.com/photo-1526367790999-0150786686a2?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1593510987459-04a0e2d8ee1c?w=1600&q=80"
   },
 ];
 
@@ -78,7 +78,7 @@ export default function Landing() {
               TOUTES SUITE
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-secondary font-semibold mb-8 animate-slide-up">
+          <p className="text-xl md:text-2xl text-secondary font-semibold mb-8 typing-animation">
             Vos courses, notre mission
           </p>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-12 animate-fade-in" style={{ animationDelay: "0.2s" }}>
@@ -87,8 +87,8 @@ export default function Landing() {
         </section>
 
         {/* Ambitions Carousel */}
-        <section className="container mx-auto px-6 py-12">
-          <h2 className="font-heading text-2xl font-bold text-center mb-8">Nos Ambitions</h2>
+        <section className="container mx-auto px-6 py-20">
+          <h2 className="font-heading text-2xl font-bold text-center mb-12">Nos Ambitions</h2>
           <div className="relative h-24 overflow-hidden">
             {ambitions.map((ambition, idx) => (
               <div
@@ -132,14 +132,17 @@ export default function Landing() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mb-8">
+                <div className="grid grid-cols-2 gap-4 mb-8 overflow-hidden">
                   {role.benefits.map((benefit, bIdx) => (
                     <div
                       key={bIdx}
-                      className="bg-card/80 backdrop-blur-sm rounded-xl p-4 border border-border animate-fade-in"
-                      style={{ animationDelay: `${bIdx * 0.1}s` }}
+                      className="bg-card/80 backdrop-blur-sm rounded-xl p-4 border border-border animate-fade-in hover:scale-105 transition-transform"
+                      style={{ 
+                        animationDelay: `${bIdx * 0.1}s`,
+                        animation: `fade-in 0.5s ease-out ${bIdx * 0.1}s, float 3s ease-in-out ${bIdx * 0.5}s infinite`
+                      }}
                     >
-                      <p className="text-sm font-medium text-center">{benefit}</p>
+                      <p className="text-sm font-medium text-center text-white">{benefit}</p>
                     </div>
                   ))}
                 </div>
@@ -157,48 +160,85 @@ export default function Landing() {
         ))}
 
         {/* Admin Section */}
-        <section className="bg-muted py-16">
+        <section className="bg-gradient-to-br from-primary/5 via-muted to-secondary/5 py-24">
           <div className="container mx-auto px-6 text-center">
-            <Shield className="w-16 h-16 text-primary mx-auto mb-4" />
-            <h3 className="font-heading text-2xl font-bold mb-4">
-              Êtes-vous un Admin Désigné ?
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              Accédez au panneau d'administration pour gérer la plateforme
-            </p>
-            <Button
-              variant="outline"
-              onClick={() => navigate("/auth/admin")}
-            >
-              Connexion Admin
-            </Button>
+            <div className="max-w-2xl mx-auto bg-card/80 backdrop-blur-sm rounded-3xl p-12 border border-border shadow-lg">
+              <Shield className="w-20 h-20 text-primary mx-auto mb-6 animate-pulse" />
+              <h3 className="font-heading text-3xl font-bold mb-4">
+                Êtes-vous un Admin Désigné ?
+              </h3>
+              <p className="text-muted-foreground mb-8 text-lg">
+                Accédez au panneau d'administration pour gérer la plateforme
+              </p>
+              <Button
+                size="lg"
+                onClick={() => navigate("/auth/admin")}
+                className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 transition-all hover:scale-105"
+              >
+                Connexion Admin
+              </Button>
+            </div>
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="bg-primary text-primary-foreground py-12">
+        <footer className="bg-secondary text-primary-foreground py-16">
           <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <div>
-                <h4 className="font-heading font-bold mb-4">TOUTES SUITE</h4>
+            <div className="grid grid-cols-3 gap-8 mb-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <h4 className="font-heading font-bold mb-3">TOUTES SUITE</h4>
                 <p className="text-sm text-primary-foreground/80">
-                  Vos courses, notre mission
+                  La super-app
                 </p>
               </div>
-              <div>
-                <h4 className="font-heading font-bold mb-4">Liens rapides</h4>
+              <div className="text-center">
+                <h4 className="font-heading font-bold mb-3">À propos</h4>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="hover:underline">À propos</a></li>
-                  <li><a href="#" className="hover:underline">Contact</a></li>
+                  <li><a href="#" className="hover:underline">Notre histoire</a></li>
+                </ul>
+              </div>
+              <div className="text-center">
+                <h4 className="font-heading font-bold mb-3">Contact</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#" className="hover:underline">+224 XXX XX</a></li>
+                </ul>
+              </div>
+              
+              <div className="text-center">
+                <h4 className="font-heading font-bold mb-3">Liens rapides</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#" className="hover:underline">Catalogue</a></li>
+                </ul>
+              </div>
+              <div className="text-center">
+                <h4 className="font-heading font-bold mb-3">Support</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="/faq" className="hover:underline">FAQ</a></li>
+                </ul>
+              </div>
+              <div className="text-center">
+                <h4 className="font-heading font-bold mb-3">Légal</h4>
+                <ul className="space-y-2 text-sm">
                   <li><a href="#" className="hover:underline">Conditions</a></li>
                 </ul>
               </div>
-              <div>
-                <h4 className="font-heading font-bold mb-4">Support</h4>
+              
+              <div className="text-center">
+                <h4 className="font-heading font-bold mb-3">Suivez-nous</h4>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="hover:underline">FAQ</a></li>
-                  <li><a href="#" className="hover:underline">Aide</a></li>
-                  <li><a href="#" className="hover:underline">+224 XXX XX XX XX</a></li>
+                  <li><a href="#" className="hover:underline">Facebook</a></li>
+                </ul>
+              </div>
+              <div className="text-center">
+                <h4 className="font-heading font-bold mb-3">Réseaux</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#" className="hover:underline">Instagram</a></li>
+                </ul>
+              </div>
+              <div className="text-center">
+                <h4 className="font-heading font-bold mb-3">Social</h4>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#" className="hover:underline">WhatsApp</a></li>
                 </ul>
               </div>
             </div>

@@ -21,7 +21,7 @@ export default function ClientProfile() {
             <User className="w-10 h-10" />
           </div>
           <div>
-            <h1 className="font-heading text-2xl font-bold">Mamadou Diallo</h1>
+            <h1 className="font-heading text-2xl font-bold">Salifou Bayo</h1>
             <p className="text-primary-foreground/80">+224 XXX XX XX XX</p>
           </div>
         </div>

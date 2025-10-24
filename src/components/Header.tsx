@@ -1,6 +1,7 @@
 import { Moon, Sun, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
+import { useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import {
   DropdownMenu,
@@ -11,20 +12,18 @@ import {
 
 export function Header() {
   const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <img src={logo} alt="TOUTES SUITE" className="h-10" />
+        <img src={logo} alt="TOUTES SUITE" className="h-14" />
         
         <div className="flex items-center gap-3">
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => {
-              // FAQ modal à implémenter
-              alert("FAQ - À venir");
-            }}
+            onClick={() => navigate("/faq")}
           >
             <HelpCircle className="h-5 w-5" />
           </Button>
