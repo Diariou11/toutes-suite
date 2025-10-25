@@ -1,6 +1,7 @@
-import { Users, Store, Truck, TrendingUp, AlertCircle, Menu } from "lucide-react";
+import { Users, Store, Truck, TrendingUp, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import AdminMenu from "@/components/AdminMenu";
 
 const kpis = [
   { label: "Commandes aujourd'hui", value: "1,247", icon: TrendingUp, trend: "+12%" },
@@ -10,9 +11,9 @@ const kpis = [
 ];
 
 const alerts = [
-  { type: "warning", message: "5 commerçants en attente de validation", action: "Voir" },
-  { type: "info", message: "12 livreurs en attente de validation", action: "Voir" },
-  { type: "error", message: "3 litiges en cours nécessitent votre attention", action: "Résoudre" },
+  { type: "warning", message: "5 commerçants en attente de validation", action: "Voir", path: "/admin/merchants" },
+  { type: "info", message: "12 livreurs en attente de validation", action: "Voir", path: "/admin/delivery" },
+  { type: "error", message: "3 litiges en cours nécessitent votre attention", action: "Résoudre", path: "/admin/disputes" },
 ];
 
 export default function AdminDashboard() {
@@ -24,9 +25,7 @@ export default function AdminDashboard() {
       <div className="bg-gradient-to-r from-purple-600 to-purple-500 text-white p-6 rounded-b-3xl">
         <div className="flex items-center justify-between mb-4">
           <h1 className="font-heading text-2xl font-bold">Administration</h1>
-          <button className="p-2 hover:bg-white/10 rounded-lg transition-colors">
-            <Menu className="w-6 h-6" />
-          </button>
+          <AdminMenu />
         </div>
         <p className="text-white/80">Vue d'ensemble de la plateforme</p>
       </div>
@@ -69,7 +68,12 @@ export default function AdminDashboard() {
               }`} />
               <div className="flex-1">
                 <p className="text-sm font-medium mb-2">{alert.message}</p>
-                <Button size="sm" variant="outline" className="h-8">
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  className="h-8"
+                  onClick={() => navigate(alert.path)}
+                >
                   {alert.action}
                 </Button>
               </div>
