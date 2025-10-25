@@ -27,6 +27,7 @@ import AdminMerchants from "./pages/admin/AdminMerchants";
 import AdminDelivery from "./pages/admin/AdminDelivery";
 import AdminReporting from "./pages/admin/AdminReporting";
 import AdminDisputes from "./pages/admin/AdminDisputes";
+import AdminValidations from "./pages/admin/AdminValidations";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
 
@@ -66,10 +67,11 @@ const App = () => (
             
             {/* Admin Routes */}
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/merchants" element={<AdminMerchants />} />
-            <Route path="/admin/delivery" element={<AdminDelivery />} />
-            <Route path="/admin/reporting" element={<AdminReporting />} />
-            <Route path="/admin/disputes" element={<AdminDisputes />} />
+          <Route path="/admin/merchants" element={<AdminMerchants />} />
+          <Route path="/admin/delivery" element={<AdminDelivery />} />
+          <Route path="/admin/reporting" element={<AdminReporting />} />
+          <Route path="/admin/disputes" element={<AdminDisputes />} />
+          <Route path="/admin/validations" element={<AdminValidations />} />
             
             {/* Other Routes */}
             <Route path="/faq" element={<FAQ />} />

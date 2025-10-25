@@ -1,10 +1,28 @@
-import { MapPin, Phone, Navigation } from "lucide-react";
+import { MapPin, Phone, Navigation, ArrowLeft } from "lucide-react";
 import { BottomNav } from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 export default function ClientTracking() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background pb-20">
+      {/* Header */}
+      <div className="absolute top-0 left-0 right-0 z-10 p-4 bg-gradient-to-b from-black/50 to-transparent">
+        <div className="flex items-center gap-3">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate("/client/home")}
+            className="text-white hover:bg-white/10"
+          >
+            <ArrowLeft className="w-6 h-6" />
+          </Button>
+          <h1 className="font-heading text-xl font-bold text-white">Suivi en Temps Réel</h1>
+        </div>
+      </div>
+
       {/* Map placeholder */}
       <div className="relative h-96 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
         <div className="text-center animate-pulse">

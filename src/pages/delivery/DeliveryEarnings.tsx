@@ -58,15 +58,24 @@ export default function DeliveryEarnings() {
           </div>
         </div>
 
-        {/* Weekly chart placeholder */}
+        {/* Weekly chart */}
         <div className="bg-card rounded-2xl p-5 border border-border">
           <h2 className="font-heading font-bold text-lg mb-4">Cette semaine</h2>
           <div className="h-40 flex items-end justify-between gap-2">
-            {[40, 65, 50, 80, 70, 90, 75].map((height, idx) => (
+            {[
+              { height: 40, amount: "28K" },
+              { height: 65, amount: "42K" },
+              { height: 50, amount: "35K" },
+              { height: 80, amount: "52K" },
+              { height: 70, amount: "48K" },
+              { height: 90, amount: "58K" },
+              { height: 75, amount: "50K" }
+            ].map((day, idx) => (
               <div key={idx} className="flex-1 flex flex-col items-center gap-2">
+                <span className="text-xs font-bold text-primary mb-1">{day.amount}</span>
                 <div
                   className="w-full bg-gradient-to-t from-primary to-secondary rounded-t-lg transition-all hover:opacity-80"
-                  style={{ height: `${height}%` }}
+                  style={{ height: `${day.height}%` }}
                 />
                 <span className="text-xs text-muted-foreground">
                   {["L", "M", "M", "J", "V", "S", "D"][idx]}

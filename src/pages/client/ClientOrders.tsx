@@ -1,6 +1,7 @@
-import { Package, Clock, CheckCircle } from "lucide-react";
+import { Package, Clock, CheckCircle, ArrowLeft } from "lucide-react";
 import { BottomNav } from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const orders = [
   {
@@ -33,10 +34,22 @@ const orders = [
 ];
 
 export default function ClientOrders() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background pb-20">
       <div className="bg-primary text-primary-foreground p-6 rounded-b-3xl">
-        <h1 className="font-heading text-2xl font-bold">Mes Commandes</h1>
+        <div className="flex items-center gap-3 mb-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate("/client/home")}
+            className="text-primary-foreground hover:bg-primary-foreground/10"
+          >
+            <ArrowLeft className="w-6 h-6" />
+          </Button>
+          <h1 className="font-heading text-2xl font-bold">Mes Commandes</h1>
+        </div>
         <p className="text-primary-foreground/80">Historique de vos achats</p>
       </div>
 

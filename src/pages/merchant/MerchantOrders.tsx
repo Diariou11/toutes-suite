@@ -1,17 +1,37 @@
-import { Check, X, Clock } from "lucide-react";
+import { Check, X, Clock, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const orders = [
   { id: "#12456", customer: "Mamadou D.", amount: "45 000", items: 3, status: "pending" },
   { id: "#12455", customer: "Fatoumata K.", amount: "32 000", items: 2, status: "accepted" },
   { id: "#12454", customer: "Ibrahima S.", amount: "67 000", items: 5, status: "ready" },
+  { id: "#12453", customer: "Aissatou B.", amount: "28 000", items: 4, status: "pending" },
+  { id: "#12452", customer: "Alsény C.", amount: "89 000", items: 7, status: "accepted" },
+  { id: "#12451", customer: "Mariama D.", amount: "54 000", items: 6, status: "ready" },
+  { id: "#12450", customer: "Mohamed T.", amount: "76 000", items: 8, status: "pending" },
+  { id: "#12449", customer: "Kadiatou S.", amount: "41 000", items: 3, status: "accepted" },
+  { id: "#12448", customer: "Boubacar K.", amount: "93 000", items: 9, status: "ready" },
+  { id: "#12447", customer: "Hawa L.", amount: "38 000", items: 5, status: "pending" },
 ];
 
 export default function MerchantOrders() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background">
       <div className="bg-primary text-primary-foreground p-6 rounded-b-3xl">
-        <h1 className="font-heading text-2xl font-bold mb-1">Commandes</h1>
+        <div className="flex items-center gap-3 mb-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate("/merchant/dashboard")}
+            className="text-primary-foreground hover:bg-primary-foreground/10"
+          >
+            <Check className="w-6 h-6" />
+          </Button>
+          <h1 className="font-heading text-2xl font-bold">Commandes</h1>
+        </div>
         <p className="text-primary-foreground/80">Gérez vos commandes</p>
       </div>
 
