@@ -127,8 +127,8 @@ export function ChatSupport() {
       )}
 
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-80 h-96 bg-card border border-border rounded-2xl shadow-xl flex flex-col z-50">
-          <div className="flex items-center justify-between p-4 border-b border-border bg-primary text-primary-foreground rounded-t-2xl">
+        <div className="fixed bottom-0 right-0 md:bottom-6 md:right-6 w-full md:w-80 h-[85vh] md:h-96 bg-card border-t md:border border-border md:rounded-2xl shadow-xl flex flex-col z-50">
+          <div className="flex items-center justify-between p-4 border-b border-border bg-primary text-primary-foreground md:rounded-t-2xl">
             <h3 className="font-heading font-bold">Assistant TOUTES SUITE</h3>
             <Button
               variant="ghost"

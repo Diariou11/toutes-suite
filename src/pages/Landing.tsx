@@ -1,8 +1,10 @@
-import { ShoppingBag, Store, Bike, Shield, Package, Clock, TrendingUp, Users, Globe, Heart } from "lucide-react";
+import { ShoppingBag, Store, Bike, Shield, Package, Clock, TrendingUp, Users, Globe, Heart, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { useState, useEffect } from "react";
+import { ChatSupport } from "@/components/ChatSupport";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 
 const roles = [
   {
@@ -69,6 +71,42 @@ export default function Landing() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-muted via-background to-muted">
       <Header />
+      
+      {/* Menu Hamburger */}
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button 
+            variant="outline" 
+            size="icon"
+            className="fixed top-20 right-6 z-50 rounded-full shadow-lg bg-card hover:bg-accent"
+          >
+            <Menu className="h-6 w-6" />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+          <SheetHeader>
+            <SheetTitle className="font-heading text-2xl">Navigation Rapide</SheetTitle>
+          </SheetHeader>
+          <div className="mt-8 space-y-4">
+            {roles.map((role) => (
+              <Button
+                key={role.title}
+                variant="outline"
+                className="w-full justify-start gap-4 h-16 text-left hover:bg-primary hover:text-primary-foreground transition-all"
+                onClick={() => navigate(role.path)}
+              >
+                <role.icon className="h-6 w-6" />
+                <div>
+                  <div className="font-bold">{role.title}</div>
+                  <div className="text-xs opacity-80">{role.description}</div>
+                </div>
+              </Button>
+            ))}
+          </div>
+        </SheetContent>
+      </Sheet>
+      
+      <ChatSupport />
       
       <main className="pt-16">
         {/* Hero Section */}
