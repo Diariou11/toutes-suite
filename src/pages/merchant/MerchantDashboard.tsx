@@ -2,6 +2,7 @@ import { Package, ShoppingCart, DollarSign, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { MerchantMenu } from "@/components/MerchantMenu";
+import { VoiceAssistant } from "@/components/VoiceAssistant";
 
 const stats = [
   { label: "Ventes du jour", value: "450 000 GNF", icon: DollarSign, color: "text-primary" },
@@ -31,6 +32,9 @@ export default function MerchantDashboard() {
       </div>
 
       <div className="p-6 space-y-6">
+        {/* Voice Assistant */}
+        <VoiceAssistant />
+
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-4">
           {stats.map((stat) => (

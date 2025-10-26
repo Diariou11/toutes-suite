@@ -2,6 +2,8 @@ import { ShoppingCart, Clock, History, Percent } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { BottomNav } from "@/components/BottomNav";
+import { ChatSupport } from "@/components/ChatSupport";
+import { ProductRecommendations } from "@/components/ProductRecommendations";
 
 const shortcuts = [
   { icon: ShoppingCart, label: "Commander", path: "/client/catalog", color: "bg-primary text-primary-foreground" },
@@ -43,6 +45,9 @@ export default function ClientHome() {
           ))}
         </div>
 
+        {/* AI Recommendations */}
+        <ProductRecommendations browsedCategories={["Épicerie", "Fruits & Légumes"]} />
+
         {/* Promos */}
         <div className="space-y-3">
           <h2 className="font-heading text-lg font-bold">Promotions</h2>
@@ -66,6 +71,7 @@ export default function ClientHome() {
         </Button>
       </div>
 
+      <ChatSupport />
       <BottomNav />
     </div>
   );

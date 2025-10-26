@@ -2,6 +2,8 @@ import { Search, ShoppingBag, Apple, Pill, Home as HomeIcon, Wrench } from "luci
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import { BottomNav } from "@/components/BottomNav";
+import { ChatSupport } from "@/components/ChatSupport";
+import { ProductRecommendations } from "@/components/ProductRecommendations";
 
 const categories = [
   { icon: ShoppingBag, name: "Épicerie", count: "250+ produits", color: "bg-green-500" },
@@ -30,6 +32,11 @@ export default function Catalog() {
         </div>
       </div>
 
+      {/* AI Recommendations */}
+      <div className="p-4">
+        <ProductRecommendations />
+      </div>
+
       {/* Categories Grid */}
       <div className="p-4 grid grid-cols-2 gap-4">
         {categories.map((category) => (
@@ -47,6 +54,7 @@ export default function Catalog() {
         ))}
       </div>
 
+      <ChatSupport />
       <BottomNav />
     </div>
   );

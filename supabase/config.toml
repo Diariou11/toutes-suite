@@ -1,1 +1,13 @@
 project_id = "rktndqfokxzhlyfxepyc"
+
+[functions.chat-support]
+verify_jwt = false
+
+[functions.product-recommendations]
+verify_jwt = false
+
+[functions.voice-assistant]
+verify_jwt = false
+
+[functions.optimize-route]
+verify_jwt = false

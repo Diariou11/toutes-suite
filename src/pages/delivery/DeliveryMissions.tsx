@@ -2,6 +2,7 @@ import { MapPin, DollarSign, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DeliveryBottomNav } from "@/components/DeliveryBottomNav";
 import { useNavigate } from "react-router-dom";
+import { RouteOptimizer } from "@/components/RouteOptimizer";
 
 const missions = [
   { id: 1, distance: "3.2 km", earning: "15 000", time: "25 min", from: "Kaloum", to: "Ratoma" },
@@ -21,19 +22,33 @@ export default function DeliveryMissions() {
         <p className="text-primary-foreground/80">Sélectionnez une mission pour commencer</p>
       </div>
 
-      {/* Stats */}
-      <div className="p-4 grid grid-cols-3 gap-3">
-        <div className="bg-card rounded-xl p-3 border border-border text-center">
-          <p className="text-2xl font-heading font-bold text-primary">12</p>
-          <p className="text-xs text-muted-foreground">Aujourd'hui</p>
-        </div>
-        <div className="bg-card rounded-xl p-3 border border-border text-center">
-          <p className="text-2xl font-heading font-bold text-primary">87</p>
-          <p className="text-xs text-muted-foreground">Cette semaine</p>
-        </div>
-        <div className="bg-card rounded-xl p-3 border border-border text-center">
-          <p className="text-2xl font-heading font-bold text-primary">4.8⭐</p>
-          <p className="text-xs text-muted-foreground">Note</p>
+      <div className="p-4 space-y-4">
+        {/* AI Route Optimizer */}
+        <RouteOptimizer 
+          missions={missions.map(m => ({ 
+            id: m.id.toString(), 
+            origin: m.from, 
+            destination: m.to, 
+            distance: m.distance, 
+            earning: m.earning, 
+            time: m.time 
+          }))} 
+        />
+
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-3">
+          <div className="bg-card rounded-xl p-3 border border-border text-center">
+            <p className="text-2xl font-heading font-bold text-primary">12</p>
+            <p className="text-xs text-muted-foreground">Aujourd'hui</p>
+          </div>
+          <div className="bg-card rounded-xl p-3 border border-border text-center">
+            <p className="text-2xl font-heading font-bold text-primary">87</p>
+            <p className="text-xs text-muted-foreground">Cette semaine</p>
+          </div>
+          <div className="bg-card rounded-xl p-3 border border-border text-center">
+            <p className="text-2xl font-heading font-bold text-primary">4.8⭐</p>
+            <p className="text-xs text-muted-foreground">Note</p>
+          </div>
         </div>
       </div>
 
