@@ -22,11 +22,11 @@ export function DeliveryBottomNav() {
               key={item.path}
               to={item.path}
               className={cn(
-                "flex flex-col items-center justify-center gap-1 flex-1 h-full transition-colors",
+                "flex flex-col items-center justify-center gap-1 flex-1 h-full transition-colors min-h-[44px]",
                 isActive ? "text-primary" : "text-muted-foreground"
               )}
             >
-              <item.icon className={cn("w-5 h-5", isActive && "stroke-[2.5]")} />
+              <item.icon className={cn("w-6 h-6", isActive && "stroke-[2.5]")} />
               <span className="text-xs font-medium">{item.label}</span>
             </Link>
           );

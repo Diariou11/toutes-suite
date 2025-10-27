@@ -120,9 +120,10 @@ export function ChatSupport() {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-primary hover:bg-primary/90 z-50"
+          size="lg"
+          className="fixed bottom-24 md:bottom-6 right-6 rounded-full min-w-[56px] min-h-[56px] md:w-16 md:h-16 shadow-2xl z-50 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 hover:scale-110 transition-all animate-pulse-orange"
         >
-          <MessageCircle className="h-6 w-6" />
+          <MessageCircle className="w-8 h-8" />
         </Button>
       )}
 

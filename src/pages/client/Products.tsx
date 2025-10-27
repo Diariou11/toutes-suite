@@ -1,8 +1,10 @@
-import { Plus, Search } from "lucide-react";
+import { Plus, Search, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { BottomNav } from "@/components/BottomNav";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
 
 const products = [
   { id: 1, name: "Riz blanc parfumé", price: "45 000", unit: "25kg", image: "🍚" },
@@ -14,7 +16,11 @@ const products = [
 ];
 
 export default function Products() {
+  const navigate = useNavigate();
+  const { addItem } = useCart();
+
   const addToCart = (product: typeof products[0]) => {
+    addItem({ id: product.id, name: product.name, price: product.price });
     toast.success(`${product.name} ajouté au panier`);
   };
 
@@ -22,7 +28,17 @@ export default function Products() {
     <div className="min-h-screen bg-background pb-20">
       {/* Header */}
       <div className="sticky top-0 bg-background border-b border-border z-10 p-4 space-y-3">
-        <h1 className="font-heading text-2xl font-bold">Épicerie</h1>
+        <div className="flex items-center gap-3">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => navigate(-1)}
+            className="min-w-[44px] min-h-[44px]"
+          >
+            <ArrowLeft className="w-6 h-6" />
+          </Button>
+          <h1 className="font-heading text-2xl font-bold">Épicerie</h1>
+        </div>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <Input
@@ -51,7 +67,7 @@ export default function Products() {
             <Button
               size="icon"
               onClick={() => addToCart(product)}
-              className="shrink-0"
+              className="shrink-0 min-w-[44px] min-h-[44px]"
             >
               <Plus className="w-5 h-5" />
             </Button>

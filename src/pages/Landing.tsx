@@ -220,68 +220,43 @@ export default function Landing() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-secondary text-primary-foreground py-16">
+        <footer className="bg-secondary text-primary-foreground py-12">
           <div className="container mx-auto px-6">
-            <div className="grid grid-cols-3 gap-8 mb-8 max-w-4xl mx-auto">
-              <div className="text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-4xl mx-auto">
+              <div className="text-center md:text-left">
                 <h4 className="font-heading font-bold mb-3">TOUTES SUITE</h4>
                 <p className="text-sm text-primary-foreground/80">
-                  La super-app
+                  La super-app 100% guinéenne
                 </p>
               </div>
-              <div className="text-center">
-                <h4 className="font-heading font-bold mb-3">À propos</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="hover:underline">Notre histoire</a></li>
-                </ul>
-              </div>
-              <div className="text-center">
-                <h4 className="font-heading font-bold mb-3">Contact</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="hover:underline">+224 XXX XX</a></li>
-                </ul>
-              </div>
               
-              <div className="text-center">
-                <h4 className="font-heading font-bold mb-3">Liens rapides</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="hover:underline">Catalogue</a></li>
-                </ul>
-              </div>
-              <div className="text-center">
-                <h4 className="font-heading font-bold mb-3">Support</h4>
+              <div className="text-center md:text-left">
+                <h4 className="font-heading font-bold mb-3">Liens</h4>
                 <ul className="space-y-2 text-sm">
                   <li><a href="/faq" className="hover:underline">FAQ</a></li>
-                </ul>
-              </div>
-              <div className="text-center">
-                <h4 className="font-heading font-bold mb-3">Légal</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="hover:underline">Conditions</a></li>
+                  <li><a href="#" className="hover:underline">À propos</a></li>
                 </ul>
               </div>
               
-              <div className="text-center">
-                <h4 className="font-heading font-bold mb-3">Suivez-nous</h4>
+              <div className="text-center md:text-left">
+                <h4 className="font-heading font-bold mb-3">Contact</h4>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="hover:underline">Facebook</a></li>
+                  <li><a href="#" className="hover:underline">+224 XXX XX XX XX</a></li>
+                  <li><a href="#" className="hover:underline">contact@toutessuite.gn</a></li>
                 </ul>
               </div>
-              <div className="text-center">
+              
+              <div className="text-center md:text-left">
                 <h4 className="font-heading font-bold mb-3">Réseaux</h4>
                 <ul className="space-y-2 text-sm">
+                  <li><a href="#" className="hover:underline">Facebook</a></li>
                   <li><a href="#" className="hover:underline">Instagram</a></li>
-                </ul>
-              </div>
-              <div className="text-center">
-                <h4 className="font-heading font-bold mb-3">Social</h4>
-                <ul className="space-y-2 text-sm">
                   <li><a href="#" className="hover:underline">WhatsApp</a></li>
                 </ul>
               </div>
             </div>
-            <div className="border-t border-primary-foreground/20 pt-8 text-center text-sm">
-              <p>&copy; 2025 TOUTES SUITE - Une super-app 100% guinéenne</p>
+            <div className="border-t border-primary-foreground/20 pt-6 text-center text-sm">
+              <p>&copy; 2025 TOUTES SUITE - Made in Guinea 🇬🇳</p>
             </div>
           </div>
         </footer>
