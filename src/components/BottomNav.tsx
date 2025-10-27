@@ -5,7 +5,7 @@ import { useCart } from "@/contexts/CartContext";
 
 const navItems = [
   { icon: Home, label: "Accueil", path: "/client/home" },
-  { icon: ShoppingCart, label: "Panier", path: "/client/orders", badge: true },
+  { icon: ShoppingCart, label: "Panier", path: "/client/cart", badge: true },
   { icon: MapPin, label: "Suivi", path: "/client/tracking" },
   { icon: User, label: "Profil", path: "/client/profile" },
 ];

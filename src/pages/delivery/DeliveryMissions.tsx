@@ -58,30 +58,53 @@ export default function DeliveryMissions() {
         {missions.map((mission) => (
           <div
             key={mission.id}
-            className="bg-card rounded-2xl p-4 border border-border hover:shadow-md transition-shadow"
+            className="bg-card rounded-2xl p-4 border border-border hover:shadow-md transition-shadow relative overflow-hidden"
           >
-            <div className="flex items-start justify-between mb-3">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 text-sm">
-                  <MapPin className="w-4 h-4 text-primary" />
-                  <span className="font-medium">{mission.from}</span>
-                  <span className="text-muted-foreground">→</span>
-                  <span className="font-medium">{mission.to}</span>
+            {/* Visual route indicator */}
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-orange-500" />
+            
+            <div className="flex items-start justify-between mb-4">
+              <div className="space-y-2 flex-1">
+                <div className="flex items-start gap-2">
+                  <div className="bg-primary/10 p-2 rounded-lg shrink-0">
+                    <MapPin className="w-4 h-4 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">Départ</p>
+                    <p className="font-heading font-semibold">{mission.from}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 pl-2">
+                  <div className="h-8 w-0.5 bg-border ml-3" />
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="bg-orange-500/10 p-2 rounded-lg shrink-0">
+                    <MapPin className="w-4 h-4 text-orange-500" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">Arrivée</p>
+                    <p className="font-heading font-semibold">{mission.to}</p>
+                  </div>
                 </div>
               </div>
-              <div className="text-right">
-                <p className="font-heading font-bold text-primary text-lg">{mission.earning} GNF</p>
+              <div className="text-right shrink-0 ml-4">
+                <p className="font-heading font-bold text-primary text-xl">{mission.earning}</p>
+                <p className="text-xs text-muted-foreground">GNF</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 mb-3">
-              <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4" />
-                <span>{mission.distance}</span>
+            <div className="flex items-center gap-4 mb-3 bg-muted/50 p-2 rounded-lg">
+              <div className="flex items-center gap-1 text-sm">
+                <MapPin className="w-4 h-4 text-primary" />
+                <span className="font-medium">{mission.distance}</span>
               </div>
-              <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                <Clock className="w-4 h-4" />
-                <span>{mission.time}</span>
+              <div className="flex items-center gap-1 text-sm">
+                <Clock className="w-4 h-4 text-primary" />
+                <span className="font-medium">{mission.time}</span>
+              </div>
+              <div className="flex items-center gap-1 text-sm ml-auto">
+                <DollarSign className="w-4 h-4 text-primary" />
+                <span className="font-medium">{(parseFloat(mission.earning.replace(/\s/g, "")) / parseFloat(mission.distance.replace(" km", ""))).toFixed(0)}/km</span>
               </div>
             </div>
 

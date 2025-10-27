@@ -1,10 +1,18 @@
-import { Plus, Search, ArrowLeft } from "lucide-react";
+import { Plus, Search, ArrowLeft, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { BottomNav } from "@/components/BottomNav";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
+import { useState, useMemo } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const products = [
   { id: 1, name: "Riz blanc parfumé", price: "45 000", unit: "25kg", image: "🍚" },
@@ -18,11 +26,30 @@ const products = [
 export default function Products() {
   const navigate = useNavigate();
   const { addItem } = useCart();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState("name");
+  const [showFilters, setShowFilters] = useState(false);
 
   const addToCart = (product: typeof products[0]) => {
     addItem({ id: product.id, name: product.name, price: product.price });
     toast.success(`${product.name} ajouté au panier`);
   };
+
+  const filteredAndSortedProducts = useMemo(() => {
+    let filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    if (sortBy === "price-asc") {
+      filtered.sort((a, b) => parseFloat(a.price.replace(/\s/g, "")) - parseFloat(b.price.replace(/\s/g, "")));
+    } else if (sortBy === "price-desc") {
+      filtered.sort((a, b) => parseFloat(b.price.replace(/\s/g, "")) - parseFloat(a.price.replace(/\s/g, "")));
+    } else {
+      filtered.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    return filtered;
+  }, [searchQuery, sortBy]);
 
   return (
     <div className="min-h-screen bg-background pb-20">
@@ -39,19 +66,52 @@ export default function Products() {
           </Button>
           <h1 className="font-heading text-2xl font-bold">Épicerie</h1>
         </div>
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Rechercher..."
-            className="pl-11 h-11"
-          />
+        <div className="flex gap-2">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="Rechercher..."
+              className="pl-11 h-11"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => setShowFilters(!showFilters)}
+            className="min-w-[44px] min-h-[44px]"
+          >
+            <SlidersHorizontal className="w-5 h-5" />
+          </Button>
         </div>
+
+        {showFilters && (
+          <div className="space-y-2 animate-fade-in">
+            <label className="text-sm font-medium">Trier par:</label>
+            <Select value={sortBy} onValueChange={setSortBy}>
+              <SelectTrigger className="h-11">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="name">Nom (A-Z)</SelectItem>
+                <SelectItem value="price-asc">Prix (croissant)</SelectItem>
+                <SelectItem value="price-desc">Prix (décroissant)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        )}
       </div>
 
       {/* Products List */}
       <div className="p-4 space-y-3">
-        {products.map((product) => (
+        {filteredAndSortedProducts.length === 0 ? (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">Aucun produit trouvé</p>
+          </div>
+        ) : (
+          filteredAndSortedProducts.map((product) => (
           <div
             key={product.id}
             className="bg-card rounded-2xl p-4 border border-border hover:shadow-md transition-shadow flex items-center gap-4"
@@ -72,7 +132,8 @@ export default function Products() {
               <Plus className="w-5 h-5" />
             </Button>
           </div>
-        ))}
+          ))
+        )}
       </div>
 
       <BottomNav />

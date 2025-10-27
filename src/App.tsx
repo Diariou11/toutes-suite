@@ -13,6 +13,7 @@ import ClientProfile from "./pages/client/ClientProfile";
 import Catalog from "./pages/client/Catalog";
 import Products from "./pages/client/Products";
 import ProductsByCategory from "./pages/client/ProductsByCategory";
+import Cart from "./pages/client/Cart";
 import Promo from "./pages/client/Promo";
 import DeliveryMissions from "./pages/delivery/DeliveryMissions";
 import DeliveryActive from "./pages/delivery/DeliveryActive";
@@ -47,7 +48,9 @@ const App = () => (
             {/* Client Routes */}
             <Route path="/client/home" element={<ClientHome />} />
             <Route path="/client/catalog" element={<Catalog />} />
-            <Route path="/client/products" element={<ProductsByCategory />} />
+            <Route path="/client/products" element={<Products />} />
+            <Route path="/client/products/:category" element={<ProductsByCategory />} />
+            <Route path="/client/cart" element={<Cart />} />
             <Route path="/client/promo" element={<Promo />} />
             <Route path="/client/orders" element={<ClientOrders />} />
             <Route path="/client/tracking" element={<ClientTracking />} />
