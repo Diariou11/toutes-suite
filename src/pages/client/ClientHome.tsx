@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { BottomNav } from "@/components/BottomNav";
 import { ChatSupport } from "@/components/ChatSupport";
 import { ProductRecommendations } from "@/components/ProductRecommendations";
+import heroBackground from "@/assets/hero-client-bg.jpg";
 
 const shortcuts = [
   { icon: ShoppingCart, label: "Commander", path: "/client/catalog", color: "bg-primary text-primary-foreground" },
@@ -23,9 +24,19 @@ export default function ClientHome() {
   return (
     <div className="min-h-screen bg-background pb-20">
       {/* Header */}
-      <div className="bg-primary text-primary-foreground p-6 rounded-b-3xl">
-        <h1 className="font-heading text-2xl font-bold mb-1">Bonjour !</h1>
-        <p className="text-primary-foreground/80">Que souhaitez-vous commander aujourd'hui ?</p>
+      <div 
+        className="relative p-6 rounded-b-3xl overflow-hidden min-h-[180px] flex flex-col justify-center"
+        style={{
+          backgroundImage: `url(${heroBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <div className="absolute inset-0 bg-primary/85 backdrop-blur-sm"></div>
+        <div className="relative z-10">
+          <h1 className="font-heading text-2xl font-bold mb-1 text-primary-foreground">Bonjour !</h1>
+          <p className="text-primary-foreground/90">Que souhaitez-vous commander aujourd'hui ?</p>
+        </div>
       </div>
 
       <div className="p-6 space-y-6">
