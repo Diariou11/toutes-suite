@@ -9,7 +9,7 @@ const shortcuts = [
   { icon: ShoppingCart, label: "Commander", path: "/client/catalog", color: "bg-primary text-primary-foreground" },
   { icon: Clock, label: "Suivi", path: "/client/tracking", color: "bg-blue-500 text-white" },
   { icon: History, label: "Historique", path: "/client/orders", color: "bg-orange-500 text-white" },
-  { icon: Percent, label: "Promos", path: "/client/promos", color: "bg-secondary text-secondary-foreground" },
+  { icon: Percent, label: "Promos", path: "/client/promo", color: "bg-secondary text-secondary-foreground" },
 ];
 
 const promos = [
