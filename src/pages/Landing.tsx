@@ -1,10 +1,11 @@
-import { ShoppingBag, Store, Bike, Shield, Package, Clock, TrendingUp, Users, Globe, Heart, Menu, X } from "lucide-react";
+import { ShoppingBag, Store, Bike, Shield, Package, Clock, TrendingUp, Users, Globe, Heart, Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { useState, useEffect } from "react";
 import { ChatSupport } from "@/components/ChatSupport";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import heroBackground from "@/assets/hero-client-bg.jpg";
 
 const roles = [
   {
@@ -110,18 +111,26 @@ export default function Landing() {
       
       <main className="pt-16">
         {/* Hero Section */}
-        <section className="container mx-auto px-6 py-16 text-center">
-          <h1 className="font-heading text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <section 
+          className="relative container mx-auto px-6 py-24 text-center overflow-hidden rounded-3xl mx-6 my-8"
+          style={{
+            backgroundImage: `url(${heroBackground})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/70 to-secondary/80 backdrop-blur-md"></div>
+          <div className="relative z-10">
+            <h1 className="font-heading text-4xl md:text-6xl font-bold mb-4 animate-fade-in text-white">
               TOUTES SUITE
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-secondary font-semibold mb-8 typing-animation">
-            Vos courses, notre mission
-          </p>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-12 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            La première super-app 100% guinéenne pour commander, vendre et livrer en toute simplicité
-          </p>
+            </h1>
+            <p className="text-xl md:text-2xl text-white font-semibold mb-8 typing-animation">
+              Vos courses, notre mission
+            </p>
+            <p className="text-white/90 max-w-2xl mx-auto mb-12 animate-fade-in text-lg" style={{ animationDelay: "0.2s" }}>
+              La première super-app 100% guinéenne pour commander, vendre et livrer en toute simplicité
+            </p>
+          </div>
         </section>
 
         {/* Ambitions Carousel */}
@@ -222,6 +231,18 @@ export default function Landing() {
         {/* Footer */}
         <footer className="bg-secondary text-primary-foreground py-12">
           <div className="container mx-auto px-6">
+            <div className="text-center mb-8">
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-primary-foreground text-secondary hover:bg-primary-foreground/90 border-2 border-primary-foreground"
+                onClick={() => navigate('/install')}
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Installer l'application
+              </Button>
+            </div>
+            
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 max-w-4xl mx-auto">
               <div className="text-center md:text-left">
                 <h4 className="font-heading font-bold mb-3">TOUTES SUITE</h4>

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import Landing from "./pages/Landing";
 import AuthPage from "./pages/auth/AuthPage";
+import InstallPWA from "./pages/InstallPWA";
 import ClientHome from "./pages/client/ClientHome";
 import ClientOrders from "./pages/client/ClientOrders";
 import ClientTracking from "./pages/client/ClientTracking";
@@ -43,6 +44,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Landing />} />
+            <Route path="/install" element={<InstallPWA />} />
             <Route path="/auth/:role" element={<AuthPage />} />
             
             {/* Client Routes */}
